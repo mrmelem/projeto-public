@@ -1,27 +1,13 @@
-import { useContext } from 'react';
-import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+
 import UserProvider from './utils/Providers/UserProvider';
-import UserContext from './utils/Contexts/UserContext';
+import CustomRoute from './components/CustomRoute';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Admin';
 import Recovery from './pages/Login/Recovery';
 import Register from './pages/Login/Register';
-
-
-const CustomRoute = ({ component: Component, ...props }) => {
-    const { token } = useContext(UserContext)
-    return (
-        < Route
-            {...props}
-            render={() => token
-                ? <Component {...props} />
-                : <Redirect to="/login" />
-            }
-        />
-    )
-}
 
 
 const Router = () => {
