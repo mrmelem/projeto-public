@@ -3,15 +3,15 @@ import React from 'react';
 import Navbar from '../../components/Navbar';
 import Center from '../../components/Center';
 
-function Home() {
+function Login() {
     return (
         <>
             <Navbar />
             <Center>
-                <h1>Home</h1>
+                <h1>Dashboard</h1>
             </Center>
         </>
     )
 }
 
-export default Home;
+export default Login;

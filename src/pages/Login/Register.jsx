@@ -1,18 +1,7 @@
-import React, { useState, useContext } from 'react';
-import UserContext from '../../utils/Contexts/UserContext';
+import React, { useState } from 'react';
 
 import Navbar from '../../components/Navbar';
 import Center from '../../components/Center';
-import { useHistory } from 'react-router';
-
-function UserLogin({ user, key }) {
-    if (user === 'pedro' && key === 'ph193456') {
-        return { token: 'ok, tudo válido' }
-    }
-
-    return { error: 'Usuário ou senha inválido' }
-}
-
 
 const Login = () => {
 
@@ -21,23 +10,10 @@ const Login = () => {
     }
 
     const [values, setValues] = useState(Initialstate);
-    const { token, setToken } = useContext(UserContext)
-    const history = useHistory();
-
-    if (token) {
-        history.push('/dashboard');
-    }
 
     function handleSubmit(e) {
         e.preventDefault();
-        const { token } = UserLogin(values)
-        console.log(token);
-        if (token) {
-            setToken(token)
-            return history.push('/dashboard')
-        }
-
-
+        console.log(values);
     }
 
     function onChange(e) {
@@ -49,10 +25,9 @@ const Login = () => {
     return (
         <>
             <Navbar />
-
             <Center>
                 <form onSubmit={handleSubmit}>
-                    <h1>Login</h1>
+                    <h1>Cadastro</h1>
 
                     <input
                         type="text"
@@ -73,18 +48,14 @@ const Login = () => {
                     <button
                         type="submit"
                     >
-                        Entrar
+                        Finalizar
                     </button>
 
 
                     <span>
-                        Esqueceu sua senha?
-                        <a href="/recovery">
-                            Clique aqui
-                        </a>
-                        ou
-                        <a href="/register">
-                            Cadastre
+                        Já possui uma conta?
+                        <a href="/login">
+                            Faça login
                         </a>
                     </span>
 
